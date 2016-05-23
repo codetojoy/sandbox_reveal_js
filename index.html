@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>My Test for Reveal</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>Slide 1</section>
+
+                <section>
+                    <img src="images/Great_Game_cartoon_from_1878.jpg">
+                    <h2>Image One</h2>
+                </section>
+                <section>
+                    <img src="images/Okhranka_group_photo.jpg">
+                    <h2>Image Two</h2>
+                </section>
+                <section>
+                    <img src="images/L_espion.jpg">
+                    <h2>Image Three</h2>
+                </section>
+
+                <!-- ******************* EXAMPLE A ********************** -->
+
+                <section>
+                    <h2>Log Reporter Java</h2>
+                    <pre><code class="hljs" data-trim contenteditable>
+import java.io.*;
+import java.util.*;
+import java.util.regex.*;
+
+public class LogReporter {
+    public static void main(String... args) throws Exception {
+        LogReporter logReporter = new LogReporter();
+        File root = new File(args[0]);
+
+        logReporter.processFiles(root);
+
+        for (String errorCode : logReporter.mapCodeToAccountId.keySet()) {
+            List<String> accountIds = logReporter.mapCodeToAccountId.get(errorCode);
+            System.out.println("for code " + errorCode + " , account ids: " + accountIds);
+        }
+    }
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Log Reporter Groovy</h2>
+                    <pre><code class="hljs" data-trim contenteditable>
+// -------- main
+
+def root = new File(args[0])
+
+root.eachFileRecurse (FILES) { file ->
+    file.eachLine { line ->
+        def matcher = (line =~ ERROR_REGEX)
+
+        if (matcher.matches()) {
+            def errorCode = matcher[0][1]
+            def accountId = matcher[0][2]
+
+            mapCodeToAccountId[errorCode] << accountId
+        }
+    }
+}
+                    </code></pre>
+                </section>
+
+				<section>The End</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
