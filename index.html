@@ -24,68 +24,34 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
+               <section>
+                    <h1>Covert Ops</h1>
+                    <h3>Transform your Java team <i>from the inside</i> with Groovy</h3>
+                    <p>
+                        <small>Michael Easter / <a href="http://twitter.com/codetojoy">@codetojoy</a></small>
+                    </p>
+                </section>
 
-                <section>
-                    <img src="images/Great_Game_cartoon_from_1878.jpg">
-                    <h2>Image One</h2>
-                </section>
-                <section>
-                    <img src="images/Okhranka_group_photo.jpg">
-                    <h2>Image Two</h2>
-                </section>
-                <section>
-                    <img src="images/L_espion.jpg">
-                    <h2>Image Three</h2>
-                </section>
+				<section>Slide 1</section>
+				<section>Slide 3</section>
+				<section>Slide 3</section>
 
                 <!-- ******************* EXAMPLE A ********************** -->
 
                 <section>
                     <h2>Log Reporter Java</h2>
                     <pre><code class="hljs" data-trim contenteditable>
-import java.io.*;
-import java.util.*;
-import java.util.regex.*;
-
-public class LogReporter {
-    public static void main(String... args) throws Exception {
-        LogReporter logReporter = new LogReporter();
-        File root = new File(args[0]);
-
-        logReporter.processFiles(root);
-
-        for (String errorCode : logReporter.mapCodeToAccountId.keySet()) {
-            List<String> accountIds = logReporter.mapCodeToAccountId.get(errorCode);
-            System.out.println("for code " + errorCode + " , account ids: " + accountIds);
-        }
-    }
                     </code></pre>
                 </section>
 
-                <section>
-                    <h2>Log Reporter Groovy</h2>
-                    <pre><code class="hljs" data-trim contenteditable>
-// -------- main
-
-def root = new File(args[0])
-
-root.eachFileRecurse (FILES) { file ->
-    file.eachLine { line ->
-        def matcher = (line =~ ERROR_REGEX)
-
-        if (matcher.matches()) {
-            def errorCode = matcher[0][1]
-            def accountId = matcher[0][2]
-
-            mapCodeToAccountId[errorCode] << accountId
-        }
-    }
-}
-                    </code></pre>
+                <section id="fragments">
+                    <h2>Counterpoint</h2>
+                    <p class="fragment">Apache Groovy</p>
+                    <p class="fragment">Java 8</p>
+                    <p class="fragment">Gradle & Kotlin</p>
                 </section>
 
-				<section>The End</section>
+				<section>References</section>
 			</div>
 		</div>
 
